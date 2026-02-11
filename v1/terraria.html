@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terraria-Inspired Game</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow: hidden;
+      background: #000;
+      font-family: monospace;
+    }
+
+    #gameCanvas {
+      display: block;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+
+    #loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    #controls {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: white;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      border-radius: 5px;
+      font-size: 12px;
+      pointer-events: none;
+    }
+
+    #controls h3 {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    #controls ul {
+      list-style: none;
+    }
+
+    #controls li {
+      margin: 5px 0;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas"></canvas>
+
+  <div id="loading">
+    <h1>Terraria-Inspired Game</h1>
+    <p>Loading...</p>
+  </div>
+
+  <div id="controls" class="hidden">
+    <h3>Controls</h3>
+    <ul>
+      <li><strong>WASD / Arrow Keys</strong> - Move</li>
+      <li><strong>Space / W / Up</strong> - Jump</li>
+      <li><strong>Left Click (Hold)</strong> - Mine / Attack</li>
+      <li><strong>Right Click</strong> - Place blocks</li>
+      <li><strong>1-9, 0</strong> - Select hotbar slot</li>
+      <li><strong>C</strong> - Open Crafting Menu</li>
+      <li><strong>E</strong> - Open Equipment Menu</li>
+      <li><strong>Right Click</strong> - Use summoning items</li>
+      <li><strong>F5</strong> - Save Game</li>
+      <li><strong>F9</strong> - Load Game</li>
+    </ul>
+  </div>
+
+  <script type="module" src="terraria.js"></script>
+
+  <script>
+    // Hide loading screen once game starts
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.getElementById('loading').classList.add('hidden');
+        document.getElementById('controls').classList.remove('hidden');
+
+        // Hide controls after 10 seconds
+        setTimeout(() => {
+          document.getElementById('controls').classList.add('hidden');
+        }, 10000);
+      }, 500);
+    });
+  </script>
+</body>
+</html>
